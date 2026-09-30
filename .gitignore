@@ -1,0 +1,44 @@
+# ==============================
+# Java compiled files
+# ==============================
+*.class
+*.jar
+
+# ==============================
+# VS Code
+# ==============================
+.vscode/
+!.vscode/settings.json
+
+# ==============================
+# Apache Tomcat
+# ==============================
+apache-tomcat-*/bin/
+apache-tomcat-*/lib/
+apache-tomcat-*/logs/
+apache-tomcat-*/temp/
+apache-tomcat-*/work/
+
+# Tomcat generated/runtime files
+apache-tomcat-*/conf/Catalina/
+apache-tomcat-*/conf/Catalina/localhost/
+apache-tomcat-*/RUNNING.txt
+
+# ==============================
+# OS files
+# ==============================
+.DS_Store
+Thumbs.db
+
+# ==============================
+# Java build output
+# ==============================
+target/
+build/
+out/
+
+# ==============================
+# IDE files
+# ==============================
+.idea/
+*.iml

@@ -1,0 +1,4 @@
+<Context>
+    <Environment name="demo/greeting" value="Hello from the ShopSphere Tomcat JNDI context."
+                 type="java.lang.String" override="false"/>
+</Context>

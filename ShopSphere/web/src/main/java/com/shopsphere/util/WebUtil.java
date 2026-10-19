@@ -38,7 +38,8 @@ public final class WebUtil {
     public static void databaseError(HttpServlet servlet, HttpServletRequest request,
                                      HttpServletResponse response, Exception exception)
             throws ServletException, IOException {
-        servlet.getServletContext().log("ShopSphere request failed while accessing the database.", exception);
+        servlet.getServletContext().log(
+                "ShopSphere request failed while accessing the database: " + exception.getMessage(), exception);
         response.setStatus(HttpServletResponse.SC_SERVICE_UNAVAILABLE);
         error(servlet, request, response, "We could not complete that request. Check the database configuration and try again.");
     }

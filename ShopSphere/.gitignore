@@ -18,3 +18,4 @@ secrets/
 
 # A server runtime must never be placed inside this application directory.
 apache-tomcat-*/
+run.md

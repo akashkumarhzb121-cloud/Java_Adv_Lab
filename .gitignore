@@ -4,6 +4,14 @@
 *.class
 *.jar
 *.war
+*.ear
+*.nar
+
+# Java runtime/build diagnostics
+*.log
+*.hprof
+hs_err_pid*
+replay_pid*
 
 # ==============================
 # Runtime secrets
@@ -17,39 +25,43 @@ secrets/
 # ==============================
 # VS Code
 # ==============================
-.vscode/
+**/.vscode/
 !.vscode/settings.json
 
 # ==============================
 # Apache Tomcat
 # ==============================
-apache-tomcat-11.0.25/
-apache-tomcat-*/bin/
-apache-tomcat-*/lib/
-apache-tomcat-*/logs/
-apache-tomcat-*/temp/
-apache-tomcat-*/work/
-
-# Tomcat generated/runtime files
-apache-tomcat-*/conf/Catalina/
-apache-tomcat-*/conf/Catalina/localhost/
-apache-tomcat-*/RUNNING.txt
+**/apache-tomcat-*/
+**/apache-maven-*/
 
 # ==============================
 # OS files
 # ==============================
 .DS_Store
 Thumbs.db
+desktop.ini
 
 # ==============================
 # Java build output
 # ==============================
-target/
-build/
-out/
+**/target/
+**/build/
+**/out/
+**/logs/
+**/temp/
+**/tmp/
+**/work/
+**/.gradle/
 
 # ==============================
 # IDE files
 # ==============================
 .idea/
+**/.settings/
+**/.metadata/
+**/nbproject/private/
 *.iml
+*.ipr
+*.iws
+*.class~
+*~

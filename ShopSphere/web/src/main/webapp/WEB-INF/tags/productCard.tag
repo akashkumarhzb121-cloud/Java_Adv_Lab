@@ -1,7 +1,8 @@
-<%@ tag body-content="empty" %>
+<%@ tag body-content="empty" pageEncoding="UTF-8" %>
 <%@ attribute name="product" required="true" type="com.shopsphere.model.Product" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>
+<%@ taglib prefix="fn" uri="jakarta.tags.functions" %>
 <%@ taglib prefix="ss" tagdir="/WEB-INF/tags" %>
 <article class="product-card h-100 d-flex flex-column position-relative">
     <div class="product-image-wrap position-relative overflow-hidden">
@@ -71,9 +72,9 @@
         </div>
         <div class="pt-2 border-top border-light-subtle d-flex justify-content-between align-items-baseline">
             <div class="price-box">
-                <strong class="price fs-5 text-dark">₹<fmt:formatNumber value="${product.salePrice}" minFractionDigits="2"/></strong>
+                <strong class="price fs-5 text-dark">&#8377;<fmt:formatNumber value="${product.salePrice}" minFractionDigits="2"/></strong>
                 <c:if test="${product.discountPercent gt 0}">
-                    <del class="text-muted small ms-1">₹<fmt:formatNumber value="${product.price}"/></del>
+                    <del class="text-muted small ms-1">&#8377;<fmt:formatNumber value="${product.price}"/></del>
                 </c:if>
             </div>
             <a href="${pageContext.request.contextPath}/product?id=${product.id}" class="view-link text-muted small">

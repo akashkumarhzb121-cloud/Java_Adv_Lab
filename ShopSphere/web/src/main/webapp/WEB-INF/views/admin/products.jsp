@@ -1,9 +1,13 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>
+<%@ taglib prefix="fn" uri="jakarta.tags.functions" %>
 <%@ include file="/WEB-INF/fragments/header.jsp" %>
 <div class="admin-layout">
     <%@ include file="/WEB-INF/fragments/sidebar.jsp" %>
     <section class="admin-content">
         <span class="eyebrow"><i class="bi bi-box-seam"></i> Catalog Management</span>
-        <h1 class="h2 font-display mb-1">Products & Inventory</h1>
+        <h1 class="h2 font-display mb-1">Products &amp; Inventory</h1>
         <p class="text-muted small mb-4">Create, edit, or adjust catalog products and their stock availability.</p>
 
         <!-- Product Form Card -->
@@ -33,7 +37,7 @@
                     </select>
                 </div>
                 <div class="col-md-3">
-                    <label class="form-label small fw-bold">Price (₹)</label>
+                    <label class="form-label small fw-bold">Price (&#8377;)</label>
                     <input class="form-control" name="price" type="number" step="0.01" min="0" required placeholder="1999.00">
                 </div>
                 <div class="col-md-2">
@@ -91,7 +95,7 @@
                                     <strong><c:out value="${product.name}"/></strong>
                                 </td>
                                 <td><span class="badge bg-light text-dark"><c:out value="${product.categoryName}"/></span></td>
-                                <td>₹<fmt:formatNumber value="${product.price}" minFractionDigits="2"/></td>
+                                <td>&#8377;<fmt:formatNumber value="${product.price}" minFractionDigits="2"/></td>
                                 <td>
                                     <span class="badge ${product.stock le 5 ? 'bg-danger-subtle text-danger' : 'bg-success-subtle text-success'}">
                                         <c:out value="${product.stock}"/> units

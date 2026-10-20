@@ -1,5 +1,7 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>
+<%@ taglib prefix="fn" uri="jakarta.tags.functions" %>
 <fmt:setBundle basename="com.shopsphere.messages"/>
 <nav class="navbar navbar-expand-lg navbar-dark shop-nav sticky-top">
     <div class="container">
@@ -25,7 +27,7 @@
             <ul class="navbar-nav align-items-lg-center gap-lg-2">
                 <li class="nav-item">
                     <a class="nav-link ${pageContext.request.servletPath == '/home' ? 'active' : ''}" href="${pageContext.request.contextPath}/home">
-                        <i class="bi bi-house-door me-1"></i> Home
+                        <i class="bi bi-house-door me-1"></i> <fmt:message key="nav.home"/>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -36,19 +38,19 @@
 
                 <c:if test="${not empty sessionScope.user}">
                     <li class="nav-item">
-                        <a class="nav-link position-relative" href="${pageContext.request.contextPath}/wishlist">
+                        <a class="nav-link position-relative ${pageContext.request.servletPath == '/wishlist' ? 'active' : ''}" href="${pageContext.request.contextPath}/wishlist">
                             <i class="bi bi-heart me-1"></i> <fmt:message key="nav.wishlist"/>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link position-relative d-inline-flex align-items-center" href="${pageContext.request.contextPath}/cart">
+                        <a class="nav-link position-relative d-inline-flex align-items-center ${pageContext.request.servletPath == '/cart' ? 'active' : ''}" href="${pageContext.request.contextPath}/cart">
                             <i class="bi bi-cart3 me-1 fs-5"></i>
                             <span class="d-none d-lg-inline"><fmt:message key="nav.cart"/></span>
                             <span class="cart-count-badge pulse-badge"><c:out value="${requestScope.cartCount != null ? requestScope.cartCount : '0'}"/></span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="${pageContext.request.contextPath}/orders">
+                        <a class="nav-link ${pageContext.request.servletPath == '/orders' ? 'active' : ''}" href="${pageContext.request.contextPath}/orders">
                             <i class="bi bi-box-seam me-1"></i> <fmt:message key="nav.orders"/>
                         </a>
                     </li>
@@ -58,7 +60,7 @@
                             <span><c:out value="${sessionScope.user.fullName != null ? sessionScope.user.fullName : 'Account'}"/></span>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end shadow-lg border-0 rounded-4 p-2 custom-dropdown">
-                            <li><a class="dropdown-item rounded-3" href="${pageContext.request.contextPath}/account/profile"><i class="bi bi-person me-2"></i> Profile & Addresses</a></li>
+                            <li><a class="dropdown-item rounded-3" href="${pageContext.request.contextPath}/account/profile"><i class="bi bi-person me-2"></i> Profile &amp; Addresses</a></li>
                             <c:if test="${sessionScope.user.role == 'ADMIN'}">
                                 <li><a class="dropdown-item rounded-3 text-primary fw-semibold" href="${pageContext.request.contextPath}/admin"><i class="bi bi-speedometer2 me-2"></i> Admin Dashboard</a></li>
                             </c:if>
@@ -77,13 +79,13 @@
 
                 <c:if test="${empty sessionScope.user}">
                     <li class="nav-item">
-                        <a class="nav-link position-relative d-inline-flex align-items-center" href="${pageContext.request.contextPath}/cart">
+                        <a class="nav-link position-relative d-inline-flex align-items-center ${pageContext.request.servletPath == '/cart' ? 'active' : ''}" href="${pageContext.request.contextPath}/cart">
                             <i class="bi bi-cart3 me-1 fs-5"></i>
                             <span><fmt:message key="nav.cart"/></span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="${pageContext.request.contextPath}/login">
+                        <a class="nav-link ${pageContext.request.servletPath == '/login' ? 'active' : ''}" href="${pageContext.request.contextPath}/login">
                             <i class="bi bi-box-arrow-in-right me-1"></i> <fmt:message key="nav.signIn"/>
                         </a>
                     </li>
@@ -95,14 +97,14 @@
                 </c:if>
             </ul>
 
-            <!-- Language Switcher -->
+            <!-- Language Switcher: Only English and Hindi as requested -->
             <form action="${pageContext.request.contextPath}/locale" method="post" class="ms-lg-3 my-2 my-lg-0">
                 <input type="hidden" name="_csrf" value="${sessionScope.csrfToken}">
                 <div class="lang-selector-wrap">
                     <i class="bi bi-globe2 lang-icon"></i>
                     <select class="form-select form-select-sm lang-select" name="language" aria-label="Language" onchange="this.form.submit()">
-                        <option value="en" ${sessionScope.locale == 'en' ? 'selected' : ''}>EN</option>
-                        <option value="hi" ${sessionScope.locale == 'hi' ? 'selected' : ''}>हिन्दी</option>
+                        <option value="en" ${sessionScope.locale == 'en' ? 'selected' : ''}>English</option>
+                        <option value="hi" ${sessionScope.locale == 'hi' ? 'selected' : ''}>&#2361;&#2367;&#2344;&#2381;&#2342;&#2368;</option>
                     </select>
                 </div>
             </form>

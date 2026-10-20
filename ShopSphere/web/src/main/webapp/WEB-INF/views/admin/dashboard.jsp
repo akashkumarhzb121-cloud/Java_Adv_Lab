@@ -1,3 +1,4 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ include file="/WEB-INF/fragments/header.jsp" %>
 <div class="admin-layout">
     <%@ include file="/WEB-INF/fragments/sidebar.jsp" %>
@@ -21,7 +22,7 @@
                     <span>Gross Sales</span>
                     <span class="p-2 rounded-3 bg-success-subtle text-success fs-5"><i class="bi bi-currency-rupee"></i></span>
                 </div>
-                <strong>₹<fmt:formatNumber value="${stats.sales}" minFractionDigits="2"/></strong>
+                <strong>&#8377;<fmt:formatNumber value="${stats.sales}" minFractionDigits="2"/></strong>
                 <small class="text-success"><i class="bi bi-graph-up-arrow"></i> Real-time DB summary</small>
             </div>
             

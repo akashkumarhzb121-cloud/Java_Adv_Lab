@@ -1,3 +1,7 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>
+<%@ taglib prefix="fn" uri="jakarta.tags.functions" %>
 <%@ include file="/WEB-INF/fragments/header.jsp" %>
 
 <div class="section-heading">
@@ -101,11 +105,11 @@
                         Use WELCOME10
                     </button>
                 </div>
-                <small class="text-muted">Try using <strong>WELCOME10</strong> for 10% off orders above ₹500.</small>
+                <small class="text-muted">Try using <strong>WELCOME10</strong> for 10% off orders above &#8377;500.</small>
             </div>
 
             <button class="btn btn-brand btn-lg w-100 shadow py-3" type="submit">
-                <i class="bi bi-lock-fill me-1"></i> Authorize & Place Order
+                <i class="bi bi-lock-fill me-1"></i> Authorize &amp; Place Order
             </button>
         </form>
     </div>
@@ -126,14 +130,14 @@
                                 <small class="text-muted">Qty: <c:out value="${item.quantity}"/></small>
                             </div>
                         </div>
-                        <strong class="small text-dark">₹<fmt:formatNumber value="${item.lineTotal}" minFractionDigits="2"/></strong>
+                        <strong class="small text-dark">&#8377;<fmt:formatNumber value="${item.lineTotal}" minFractionDigits="2"/></strong>
                     </div>
                 </c:forEach>
             </div>
 
             <div class="summary-line py-2 d-flex justify-content-between">
                 <span class="text-secondary">Subtotal</span>
-                <strong class="text-dark">₹<fmt:formatNumber value="${subtotal}" minFractionDigits="2"/></strong>
+                <strong class="text-dark">&#8377;<fmt:formatNumber value="${subtotal}" minFractionDigits="2"/></strong>
             </div>
 
             <div class="summary-line py-2 d-flex justify-content-between">
@@ -145,7 +149,7 @@
 
             <div class="summary-line py-2 d-flex justify-content-between align-items-baseline">
                 <span class="fw-bold">Estimated Total</span>
-                <strong class="fs-4 text-brand">₹<fmt:formatNumber value="${subtotal}" minFractionDigits="2"/></strong>
+                <strong class="fs-4 text-brand">&#8377;<fmt:formatNumber value="${subtotal}" minFractionDigits="2"/></strong>
             </div>
 
             <div class="bg-light p-3 rounded-3 small text-muted mt-3">

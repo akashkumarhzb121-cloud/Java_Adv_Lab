@@ -1,5 +1,7 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ include file="/WEB-INF/fragments/header.jsp" %>
 <%@ taglib prefix="ss" tagdir="/WEB-INF/tags" %>
+<%@ taglib prefix="fn" uri="jakarta.tags.functions" %>
 
 <nav aria-label="breadcrumb" class="mb-4">
     <ol class="breadcrumb small">
@@ -35,15 +37,15 @@
         
         <div class="d-flex align-items-center gap-3 mb-3">
             <ss:rating value="${product.rating}" count="${product.reviewCount}"/>
-            <span class="text-muted">·</span>
+            <span class="text-muted">&middot;</span>
             <span class="text-muted small"><c:out value="${product.reviewCount}"/> verified reviews</span>
         </div>
 
         <div class="d-flex align-items-baseline gap-3 mb-3">
-            <span class="detail-price">₹<fmt:formatNumber value="${product.salePrice}" minFractionDigits="2"/></span>
+            <span class="detail-price">&#8377;<fmt:formatNumber value="${product.salePrice}" minFractionDigits="2"/></span>
             <c:if test="${product.discountPercent gt 0}">
-                <del class="text-muted fs-5">₹<fmt:formatNumber value="${product.price}"/></del>
-                <span class="badge bg-danger-subtle text-danger fw-bold rounded-pill">Save ₹<fmt:formatNumber value="${product.price - product.salePrice}" minFractionDigits="2"/></span>
+                <del class="text-muted fs-5">&#8377;<fmt:formatNumber value="${product.price}"/></del>
+                <span class="badge bg-danger-subtle text-danger fw-bold rounded-pill">Save &#8377;<fmt:formatNumber value="${product.price - product.salePrice}" minFractionDigits="2"/></span>
             </c:if>
         </div>
 
@@ -111,7 +113,7 @@
         <!-- Trust Badges -->
         <div class="card border-0 bg-light rounded-4 p-3 mb-2">
             <div class="d-flex flex-wrap gap-4 text-muted small">
-                <span><i class="bi bi-truck text-brand me-1 fs-6"></i> Free shipping over ₹500</span>
+                <span><i class="bi bi-truck text-brand me-1 fs-6"></i> Free shipping over &#8377;500</span>
                 <span><i class="bi bi-arrow-counterclockwise text-brand me-1 fs-6"></i> 7-day hassle-free returns</span>
                 <span><i class="bi bi-shield-check text-brand me-1 fs-6"></i> 100% Genuine product</span>
             </div>
@@ -211,7 +213,7 @@
                                 </div>
                                 <div>
                                     <strong class="d-block text-dark"><c:out value="${review.title}"/></strong>
-                                    <small class="text-muted"><c:out value="${review.reviewerName}"/> · <c:out value="${review.createdAt}"/></small>
+                                    <small class="text-muted"><c:out value="${review.reviewerName}"/> &middot; <c:out value="${review.createdAt}"/></small>
                                 </div>
                             </div>
                             <span class="badge bg-warning-subtle text-warning-emphasis px-2 py-1 rounded-pill">

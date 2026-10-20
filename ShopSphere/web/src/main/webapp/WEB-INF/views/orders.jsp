@@ -1,3 +1,4 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ include file="/WEB-INF/fragments/header.jsp" %>
 <%@ taglib prefix="fn" uri="jakarta.tags.functions" %>
 
@@ -50,7 +51,7 @@
                                         <c:out value="${order.status}"/>
                                     </span>
                                 </td>
-                                <td class="fw-bold">₹<fmt:formatNumber value="${order.total}" minFractionDigits="2"/></td>
+                                <td class="fw-bold">&#8377;<fmt:formatNumber value="${order.total}" minFractionDigits="2"/></td>
                                 <td class="text-end">
                                     <a class="btn btn-sm btn-outline-dark rounded-pill px-3" href="${pageContext.request.contextPath}/order?id=${order.id}">
                                         <i class="bi bi-receipt me-1"></i> Track & Details

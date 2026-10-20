@@ -1,3 +1,7 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>
+<%@ taglib prefix="fn" uri="jakarta.tags.functions" %>
 <%@ include file="/WEB-INF/fragments/header.jsp" %>
 
 <c:if test="${param.placed == '1' || placed}">
@@ -82,9 +86,9 @@
                                 <td>
                                     <strong><c:out value="${item.productName}"/></strong>
                                 </td>
-                                <td>₹<fmt:formatNumber value="${item.unitPrice}" minFractionDigits="2"/></td>
+                                <td>&#8377;<fmt:formatNumber value="${item.unitPrice}" minFractionDigits="2"/></td>
                                 <td><c:out value="${item.quantity}"/></td>
-                                <td class="text-end fw-bold">₹<fmt:formatNumber value="${item.lineTotal}" minFractionDigits="2"/></td>
+                                <td class="text-end fw-bold">&#8377;<fmt:formatNumber value="${item.lineTotal}" minFractionDigits="2"/></td>
                             </tr>
                         </c:forEach>
                     </tbody>
@@ -99,13 +103,13 @@
             
             <div class="summary-line py-2 d-flex justify-content-between">
                 <span class="text-secondary">Subtotal</span>
-                <strong class="text-dark">₹<fmt:formatNumber value="${order.subtotal}" minFractionDigits="2"/></strong>
+                <strong class="text-dark">&#8377;<fmt:formatNumber value="${order.subtotal}" minFractionDigits="2"/></strong>
             </div>
 
             <c:if test="${order.discount gt 0}">
                 <div class="summary-line py-2 d-flex justify-content-between text-success">
                     <span>Voucher Discount</span>
-                    <strong>-₹<fmt:formatNumber value="${order.discount}" minFractionDigits="2"/></strong>
+                    <strong>-&#8377;<fmt:formatNumber value="${order.discount}" minFractionDigits="2"/></strong>
                 </div>
             </c:if>
 
@@ -118,7 +122,7 @@
 
             <div class="summary-line py-2 d-flex justify-content-between align-items-baseline">
                 <span class="fw-bold fs-6">Grand Total</span>
-                <strong class="fs-4 text-brand">₹<fmt:formatNumber value="${order.total}" minFractionDigits="2"/></strong>
+                <strong class="fs-4 text-brand">&#8377;<fmt:formatNumber value="${order.total}" minFractionDigits="2"/></strong>
             </div>
 
             <div class="mt-4 pt-3 border-top">

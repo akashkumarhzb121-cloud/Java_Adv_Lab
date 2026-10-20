@@ -22,9 +22,24 @@ public class HealthServlet extends HttpServlet {
     }
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        response.setContentType("text/plain;charset=UTF-8");
-        response.getWriter().println(component + " is running.");
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String format = request.getParameter("format");
+        if ("text".equalsIgnoreCase(format)) {
+            response.setContentType("text/plain;charset=UTF-8");
+            response.getWriter().println(component + " is running.");
+            return;
+        }
+
+        request.setAttribute("component", component);
+        request.setAttribute("serverInfo", getServletContext().getServerInfo());
+        request.setAttribute("jvmVersion", System.getProperty("java.version"));
+        request.setAttribute("osName", System.getProperty("os.name"));
+        request.setAttribute("freeMemoryMB", Runtime.getRuntime().freeMemory() / (1024 * 1024));
+        request.setAttribute("totalMemoryMB", Runtime.getRuntime().totalMemory() / (1024 * 1024));
+        request.setAttribute("maxMemoryMB", Runtime.getRuntime().maxMemory() / (1024 * 1024));
+        request.setAttribute("activeThreads", Thread.activeCount());
+
+        request.getRequestDispatcher("/WEB-INF/views/health.jsp").forward(request, response);
     }
 
     @Override

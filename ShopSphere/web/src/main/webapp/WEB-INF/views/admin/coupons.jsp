@@ -1,8 +1,12 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>
+<%@ taglib prefix="fn" uri="jakarta.tags.functions" %>
 <%@ include file="/WEB-INF/fragments/header.jsp" %>
 <div class="admin-layout">
     <%@ include file="/WEB-INF/fragments/sidebar.jsp" %>
     <section class="admin-content">
-        <span class="eyebrow"><i class="bi bi-ticket-perforated"></i> Marketing & Discounts</span>
+        <span class="eyebrow"><i class="bi bi-ticket-perforated"></i> Marketing &amp; Discounts</span>
         <h1 class="h2 font-display mb-1">Promotional Coupons</h1>
         <p class="text-muted small mb-4">Create percentage discount coupons with minimum order rules.</p>
 
@@ -21,7 +25,7 @@
                     <input class="form-control" name="discountPercent" type="number" min="0.01" max="100" step="0.01" required placeholder="15">
                 </div>
                 <div class="col-md-4">
-                    <label class="form-label small fw-bold">Minimum Order Amount (₹)</label>
+                    <label class="form-label small fw-bold">Minimum Order Amount (&#8377;)</label>
                     <input class="form-control" name="minimumOrder" type="number" min="0" step="0.01" value="500.00" required>
                 </div>
                 <div class="col-12 mt-2">
@@ -51,7 +55,7 @@
                             <tr>
                                 <td><span class="font-monospace fw-bold fs-6"><c:out value="${coupon.code}"/></span></td>
                                 <td><span class="badge bg-warning-subtle text-warning-emphasis"><c:out value="${coupon.discountPercent}"/>% OFF</span></td>
-                                <td>₹<fmt:formatNumber value="${coupon.minimumOrder}" minFractionDigits="2"/></td>
+                                <td>&#8377;<fmt:formatNumber value="${coupon.minimumOrder}" minFractionDigits="2"/></td>
                                 <td>
                                     <span class="badge ${coupon.active ? 'bg-success-subtle text-success' : 'bg-secondary-subtle text-secondary'}">
                                         <c:out value="${coupon.active ? 'Active' : 'Inactive'}"/>

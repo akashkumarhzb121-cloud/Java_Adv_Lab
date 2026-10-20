@@ -1,3 +1,4 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ include file="/WEB-INF/fragments/header.jsp" %>
 <%@ taglib prefix="ss" tagdir="/WEB-INF/tags" %>
 
@@ -34,7 +35,7 @@
                     <i class="bi bi-gift-fill me-1"></i> Welcome Offer
                 </span>
                 <h3 class="text-white h4 m-0 font-display">Enjoy 10% OFF on your first purchase</h3>
-                <p class="text-secondary small mb-0 mt-1">Use voucher code at checkout on orders above ₹500.</p>
+                <p class="text-secondary small mb-0 mt-1">Use voucher code at checkout on orders above &#8377;500.</p>
             </div>
             <div class="d-flex align-items-center gap-2">
                 <span class="fs-5 font-monospace fw-bold px-3 py-2 rounded-3 border border-secondary border-opacity-50" style="background: rgba(255,255,255,0.08);">WELCOME10</span>

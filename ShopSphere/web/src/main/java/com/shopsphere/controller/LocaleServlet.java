@@ -17,6 +17,8 @@ public class LocaleServlet extends HttpServlet {
             return;
         }
         request.getSession().setAttribute("locale", language);
-        response.sendRedirect(request.getContextPath() + "/products");
+        String referer = request.getHeader("Referer");
+        String home = request.getContextPath() + "/home";
+        response.sendRedirect(referer != null && referer.contains(request.getContextPath()) ? referer : home);
     }
 }

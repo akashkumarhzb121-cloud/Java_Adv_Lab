@@ -12,8 +12,8 @@ import java.io.IOException;
 import java.security.MessageDigest;
 import java.nio.charset.StandardCharsets;
 
-@WebFilter(urlPatterns = {"/login", "/register", "/products", "/product", "/cart", "/checkout",
-        "/orders", "/order", "/wishlist", "/reviews", "/account/*", "/admin/*", "/logout", "/locale"})
+@WebFilter(urlPatterns = {"/home", "/login", "/register", "/products", "/product", "/cart", "/checkout",
+        "/orders", "/order", "/wishlist", "/reviews", "/account/*", "/admin", "/admin/*", "/logout", "/locale"})
 public class CsrfFilter implements Filter {
     @Override
     public void doFilter(jakarta.servlet.ServletRequest request, jakarta.servlet.ServletResponse response,

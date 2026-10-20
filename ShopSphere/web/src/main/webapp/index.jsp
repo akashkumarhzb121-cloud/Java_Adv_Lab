@@ -1,3 +1,2 @@
-<%
-    response.sendRedirect(request.getContextPath() + "/products");
-%>
+<%@ page contentType="text/html;charset=UTF-8" %>
+<jsp:forward page="/home"/>

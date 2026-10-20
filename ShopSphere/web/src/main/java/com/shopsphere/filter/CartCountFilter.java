@@ -13,8 +13,8 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
 
-@WebFilter(urlPatterns = {"/products", "/product", "/cart", "/checkout", "/orders",
-        "/order", "/wishlist", "/account/*", "/admin/*"})
+@WebFilter(urlPatterns = {"/home", "/products", "/product", "/cart", "/checkout", "/orders",
+        "/order", "/wishlist", "/account/*", "/admin", "/admin/*", "/login", "/register"})
 public class CartCountFilter implements Filter {
     private final CartDAO cart = new CartDAO();
 
@@ -28,10 +28,10 @@ public class CartCountFilter implements Filter {
                 httpRequest.setAttribute("cartCount", cart.countForUser(user.id()));
             } catch (SQLException exception) {
                 httpRequest.getServletContext().log("Unable to load the current cart item count.", exception);
-                ((HttpServletResponse) response).sendError(HttpServletResponse.SC_SERVICE_UNAVAILABLE,
-                        "The cart could not be loaded. Please retry shortly.");
-                return;
+                httpRequest.setAttribute("cartCount", 0);
             }
+        } else {
+            httpRequest.setAttribute("cartCount", 0);
         }
         chain.doFilter(request, response);
     }

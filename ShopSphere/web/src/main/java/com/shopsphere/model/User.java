@@ -5,6 +5,11 @@ public record User(long id, String fullName, String email, String role, String p
         return "ADMIN".equals(role);
     }
 
+    /** Jakarta EL record resolver looks up {@code admin()}, not {@code isAdmin()}. */
+    public boolean admin() {
+        return isAdmin();
+    }
+
     public long getId() { return id; }
     public String getFullName() { return fullName; }
     public String getEmail() { return email; }

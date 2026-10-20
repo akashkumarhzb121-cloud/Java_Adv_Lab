@@ -2,6 +2,7 @@ package com.shopsphere.controller;
 
 import com.shopsphere.service.ProductService;
 import com.shopsphere.dao.ReviewDAO;
+import com.shopsphere.util.RecentlyViewed;
 import com.shopsphere.util.WebUtil;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -32,6 +33,7 @@ public class ProductServlet extends HttpServlet {
                 }
                 request.setAttribute("product", product.get());
                 request.setAttribute("reviews", reviews.findForProduct(productId));
+                RecentlyViewed.remember(request, response, productId);
                 WebUtil.csrfToken(request);
                 request.getRequestDispatcher("/WEB-INF/views/product-details.jsp").forward(request, response);
                 return;

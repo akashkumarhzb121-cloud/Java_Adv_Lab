@@ -192,7 +192,25 @@ INSERT IGNORE INTO products
    'https://images.unsplash.com/photo-1544947950-fa07a98d237f?auto=format&fit=crop&w=800&q=80', 799.00, 5, 50),
   (6, 2, 'Linen Throw Blanket', 'linen-throw-blanket',
    'A soft, breathable throw blanket in a neutral tone for relaxed living spaces.',
-   'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=800&q=80', 1599.00, 12, 27);
+   'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=800&q=80', 1599.00, 12, 27),
+  (7, 1, 'Cloud Compact Keyboard', 'cloud-compact-keyboard',
+   'A quiet compact keyboard with low-profile keys, designed for long writing sessions.',
+   'https://images.unsplash.com/photo-1511467687858-23d96c32e4ae?auto=format&fit=crop&w=800&q=80', 3299.00, 18, 28),
+  (8, 3, 'Coastal Linen Shirt', 'coastal-linen-shirt',
+   'A breathable linen shirt with a relaxed fit for warm-weather days.',
+   'https://images.unsplash.com/photo-1593030761757-71fae45fa0e7?auto=format&fit=crop&w=800&q=80', 2199.00, 8, 31),
+  (9, 2, 'Stoneware Pour-Over Set', 'stoneware-pour-over-set',
+   'A handmade stoneware dripper and mug set for a slower morning coffee ritual.',
+   'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=800&q=80', 1899.00, 0, 16),
+  (10, 4, 'Notes on Making', 'notes-on-making',
+   'A field guide to craft, process, and the pleasure of making useful things.',
+   'https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=800&q=80', 649.00, 10, 44),
+  (11, 1, 'Desk Task Light', 'desk-task-light',
+   'An adjustable LED task light with a warm-to-cool color range for evening work.',
+   'https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=800&q=80', 2799.00, 14, 19),
+  (12, 3, 'Weekend Tote', 'weekend-tote',
+   'A structured canvas tote with interior pockets for markets, campuses, and short trips.',
+   'https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=800&q=80', 1499.00, 16, 36);
 
 INSERT IGNORE INTO coupons
   (code, discount_percent, minimum_order, starts_at, expires_at, usage_limit, active)

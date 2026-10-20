@@ -1,5 +1,6 @@
 package com.shopsphere.controller;
 
+import com.shopsphere.dao.AddressDAO;
 import com.shopsphere.dao.CartDAO;
 import com.shopsphere.service.CheckoutService;
 import com.shopsphere.util.WebUtil;
@@ -16,6 +17,7 @@ import java.sql.SQLException;
 public class CheckoutServlet extends HttpServlet {
     private final CheckoutService checkout = new CheckoutService();
     private final CartDAO cart = new CartDAO();
+    private final AddressDAO addresses = new AddressDAO();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -29,6 +31,7 @@ public class CheckoutServlet extends HttpServlet {
             request.setAttribute("items", items);
             request.setAttribute("subtotal", items.stream().map(item -> item.lineTotal())
                     .reduce(java.math.BigDecimal.ZERO, java.math.BigDecimal::add));
+            request.setAttribute("addresses", addresses.findForUser(WebUtil.user(request).id()));
             WebUtil.csrfToken(request);
             request.getRequestDispatcher("/WEB-INF/views/checkout.jsp").forward(request, response);
         } catch (SQLException exception) {

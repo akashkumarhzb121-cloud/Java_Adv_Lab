@@ -38,4 +38,33 @@ public final class InventoryServiceImpl extends UnicastRemoteObject implements I
             throw new RemoteException("Quantity overflow", e);
         }
     }
+
+    @Override
+    public synchronized InventoryItem getProduct(int id) {
+        return inventory.get(skuFor(id));
+    }
+
+    @Override
+    public synchronized int getStock(int productId) {
+        InventoryItem item = inventory.get(skuFor(productId));
+        return item == null ? 0 : item.quantity();
+    }
+
+    @Override
+    public synchronized boolean updateStock(int productId, int quantity) throws RemoteException {
+        if (quantity < 0) {
+            throw new RemoteException("Quantity cannot be negative");
+        }
+        String sku = skuFor(productId);
+        InventoryItem current = inventory.get(sku);
+        if (current == null) {
+            return false;
+        }
+        inventory.put(sku, new InventoryItem(sku, current.name(), quantity));
+        return true;
+    }
+
+    private static String skuFor(int id) {
+        return "SKU-" + id;
+    }
 }

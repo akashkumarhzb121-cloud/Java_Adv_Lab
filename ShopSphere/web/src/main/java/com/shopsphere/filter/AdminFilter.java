@@ -11,7 +11,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-@WebFilter(urlPatterns = "/admin/*")
+@WebFilter(urlPatterns = {"/admin", "/admin/*"})
 public class AdminFilter implements Filter {
     @Override
     public void doFilter(jakarta.servlet.ServletRequest request, jakarta.servlet.ServletResponse response,
@@ -19,7 +19,8 @@ public class AdminFilter implements Filter {
         HttpServletRequest httpRequest = (HttpServletRequest) request;
         HttpServletResponse httpResponse = (HttpServletResponse) response;
         String path = httpRequest.getPathInfo();
-        if ("/login".equals(path)) {
+        String servletPath = httpRequest.getServletPath();
+        if ("/login".equals(path) || "/admin/login".equals(servletPath)) {
             chain.doFilter(request, response);
             return;
         }

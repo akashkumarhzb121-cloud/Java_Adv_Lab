@@ -59,6 +59,23 @@ public class ProductDAO {
         }
     }
 
+    public List<Product> findFeatured(int limit) throws SQLException {
+        String sql = SELECT_PRODUCTS
+                + " WHERE p.active = TRUE AND c.active=TRUE GROUP BY p.id, c.name"
+                + " ORDER BY p.discount_percent DESC, p.created_at DESC LIMIT ?";
+        try (Connection connection = Database.getConnection();
+             PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setInt(1, Math.max(1, Math.min(limit, 24)));
+            try (ResultSet result = statement.executeQuery()) {
+                List<Product> products = new ArrayList<>();
+                while (result.next()) {
+                    products.add(mapProduct(result));
+                }
+                return products;
+            }
+        }
+    }
+
     public Optional<Product> findActiveById(long id) throws SQLException {
         String sql = SELECT_PRODUCTS + " WHERE p.active = TRUE AND c.active=TRUE AND p.id = ? GROUP BY p.id, c.name";
         try (Connection connection = Database.getConnection();

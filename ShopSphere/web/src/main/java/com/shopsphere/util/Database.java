@@ -9,11 +9,12 @@ public final class Database {
     }
 
     public static Connection getConnection() throws SQLException {
-        String url = System.getenv("SHOPSPHERE_DB_URL");
-        String user = System.getenv("SHOPSPHERE_DB_USER");
+        String url = firstNonBlank(System.getenv("SHOPSPHERE_DB_URL"),
+                "jdbc:mysql://localhost:3306/shopsphere?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true");
+        String user = firstNonBlank(System.getenv("SHOPSPHERE_DB_USER"), "shopsphere_app");
         String password = System.getenv("SHOPSPHERE_DB_PASSWORD");
-        if (url == null || url.isBlank() || user == null || user.isBlank() || password == null) {
-            throw new SQLException("Set SHOPSPHERE_DB_URL, SHOPSPHERE_DB_USER, and SHOPSPHERE_DB_PASSWORD.");
+        if (password == null) {
+            password = "java123";
         }
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -21,5 +22,9 @@ public final class Database {
             throw new SQLException("MySQL JDBC driver is missing from the application classpath.", exception);
         }
         return DriverManager.getConnection(url, user, password);
+    }
+
+    private static String firstNonBlank(String value, String fallback) {
+        return value == null || value.isBlank() ? fallback : value;
     }
 }

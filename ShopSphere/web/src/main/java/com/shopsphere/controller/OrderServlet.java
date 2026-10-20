@@ -1,7 +1,7 @@
 package com.shopsphere.controller;
 
-import com.shopsphere.dao.OrderDAO;
 import com.shopsphere.model.User;
+import com.shopsphere.service.OrderService;
 import com.shopsphere.util.WebUtil;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -14,7 +14,7 @@ import java.sql.SQLException;
 
 @WebServlet(urlPatterns = {"/orders", "/order"})
 public class OrderServlet extends HttpServlet {
-    private final OrderDAO orders = new OrderDAO();
+    private final OrderService orders = new OrderService();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -23,19 +23,19 @@ public class OrderServlet extends HttpServlet {
         try {
             if ("/order".equals(request.getServletPath())) {
                 long id = WebUtil.positiveId(request.getParameter("id"), "order");
-                if (!orders.ownsOrder(id, user.id())) {
+                var order = orders.findOwned(id, user.id());
+                if (order.isEmpty()) {
                     response.sendError(HttpServletResponse.SC_NOT_FOUND);
                     return;
                 }
                 request.setAttribute("orderId", id);
-                request.setAttribute("order", orders.findForCustomer(user.id()).stream()
-                        .filter(order -> order.id() == id).findFirst().orElseThrow());
-                request.setAttribute("items", orders.findItems(id, user.id()));
+                request.setAttribute("order", order.get());
+                request.setAttribute("items", orders.items(id, user.id()));
                 request.setAttribute("placed", "1".equals(request.getParameter("placed")));
                 request.getRequestDispatcher("/WEB-INF/views/order-details.jsp").forward(request, response);
                 return;
             }
-            request.setAttribute("orders", orders.findForCustomer(user.id()));
+            request.setAttribute("orders", orders.history(user.id()));
             request.getRequestDispatcher("/WEB-INF/views/orders.jsp").forward(request, response);
         } catch (IllegalArgumentException exception) {
             response.sendError(HttpServletResponse.SC_BAD_REQUEST, exception.getMessage());

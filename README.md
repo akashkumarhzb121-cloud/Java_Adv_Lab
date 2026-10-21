@@ -1,92 +1,168 @@
-# RTU 5th Sem Advanced Java Lab (5CS4-24) ☕
+# Advanced Java Lab — Semester 5
 
-This repository contains the complete practical implementation, source code, and configurations for the **Advanced Java Laboratory** course prescribed for the **5th Semester B.Tech in Computer Science and Engineering (CSE)** at **Rajasthan Technical University (RTU), Kota**.
+This repository contains my **Advanced Java Laboratory** experiments for **CSE, 5th semester**, plus **ShopSphere**, a Java e-commerce project that brings several of the lab technologies together.
 
----
+## Live project
 
-## 📌 Course Details
-* **Course Title:** Advanced Java Lab
-* **Course Code:** 5CS4-24
-* **Semester:** V Semester (3rd Year)
-* **Branch:** Computer Science & Engineering (CSE)
-* **Affiliation:** Rajasthan Technical University (RTU), Kota
+- **ShopSphere on Render:** [https://java-adv-lab.onrender.com/](https://java-adv-lab.onrender.com/)
 
----
+## Student and course details
 
-## 📂 Repository Structure
+| Detail | Information |
+| --- | --- |
+| Student | Akash Kumar |
+| Roll number | 24EGJCS015 |
+| Semester | 5th | 3rd Year |
+| Branch | Computer Science and Engineering (CSE) |
+| College | GIT College |
+| University | Rajasthan Technical University (RTU) |
+| Course | Advanced Java Lab |
 
-The project is organized by experiments covering key advanced Java technologies:
+## Repository layout
+
+The experiments are kept in separate, numbered folders. ShopSphere is a separate capstone project with its own web, Swing, socket, and RMI code.
 
 ```text
-├── Exp01_Swing_GUI/         # Swing UI components & MVC architecture layout
-├── Exp02_JDBC_Connectivity/ # Database interactions using java.sql
-├── Exp03_Socket_Networking/ # TCP/IP Client-Server network communication
-├── Exp04_RMI_Application/   # Distributed applications using RMI architecture
-├── Exp05_Java_Servlets/     # Server-side HTTP request/response & session filters
-├── Exp06_JSP_Application/   # Dynamic page handling, Expression Language & JSTL
-└── README.md                # Project documentation (This file)
+Java_Adv_Lab/
+├── Experiment-01-Registration-Form-Using-Java/
+│   ├── registration portalStudentRegistrationSystem.java
+│   └── registration portalstudent_database.sql
+├── Experiment-02-Database-Operations-With-JDBC/
+│   ├── jdbcApp.java
+│   └── pom.xml
+├── Experiment-03-MVC-Pattern-Based-Calculator/
+│   ├── model.java
+│   ├── view.java
+│   ├── controller.java
+│   └── main.java
+├── Experiment-04-Distributed-Calculator-Using-RMI/
+│   ├── calculator.java
+│   ├── server.java
+│   ├── client.java
+│   └── Sample.java
+├── Experiment-05-Multithreaded-TCP-Client-Server/
+│   ├── Server.java
+│   └── Client.java
+├── Experiment-06-HTTP-Request-Handling-With-Servlets/
+│   ├── pom.xml
+│   └── src/
+├── Experiment-07-Web-Based-Student-Portal/
+│   └── jsp-servlet-student-main/
+├── OTHERS/                           # Additional/alternate lab implementations
+└── ShopSphere/                       # E-commerce capstone project
+    ├── database/                     # ShopSphere database schema and seed data
+    ├── docs/                         # Project and syllabus documentation
+    ├── network/                      # TCP socket, serialization, URLConnection demos
+    ├── rmi/                          # Remote inventory service and client
+    ├── swing-admin/                  # Swing administration application
+    ├── web/src/main/java/com/shopsphere/
+    │   ├── controller/               # Servlet controllers
+    │   ├── dao/                      # JDBC data access
+    │   ├── filter/                   # Authentication, admin and CSRF filters
+    │   ├── listener/                 # Application and session listeners
+    │   ├── model/
+    │   ├── service/
+    │   └── util/
+    ├── web/src/main/webapp/          # JSP views, tags, assets and syllabus demos
+    ├── pom.xml
+    ├── Dockerfile
+    └── render.yaml
 ```
 
----
+## Lab experiments
 
-## 📋 List of Experiments (As per RTU Syllabus)
+### Experiment 1 — Registration form using Java
 
-### 🔹 Module 1: Graphical User Interfaces with Swing
-* **Experiment 1:** Study and implementation of Java Swing components (JTextField, JButton, JToggleButton, JCheckBox, JRadioButton) utilizing the **MVC Architecture** and Pluggable Look and Feel.
-* **Experiment 2:** Creation of a multi-window desktop GUI application (e.g., Calculator or User Registration Form).
+Builds a Java Swing student registration form and includes a SQL script for the student database. The source combines GUI event handling with database connectivity.
 
-### 🔹 Module 2: Database Programming & Networking
-* **Experiment 3:** Establish database connectivity via the **`java.sql`** package using proper JDBC drivers to execute CRUD commands and handle `ResultSet` mappings.
-* **Experiment 4:** Client-Server Socket programming using the **`java.net`** package demonstrating reliable data transfer via TCP protocol.
+### Experiment 2 — Database operations with JDBC
 
-### 🔹 Module 3: Distributed Computing
-* **Experiment 5:** Development of a distributed enterprise application via **Remote Method Invocation (RMI)** by defining Remote Interfaces, Stubs, Skeletons, and binding with the `rmiregistry`.
+Demonstrates Java database connectivity and database operations in `jdbcApp.java`. The folder includes a Maven `pom.xml` for its dependencies and build.
 
-### 🔹 Module 4: Server-Side Web Technologies
-* **Experiment 6:** Implementation of **Java Servlets** mapping the web container lifecycle, parameter parsing, session tracking (`HttpSession`), and filter configurations.
-* **Experiment 7:** Creation of dynamic **JavaServer Pages (JSP)** leveraging JSP implicit objects, custom action elements, Expression Language (EL), and JSTL tags.
+### Experiment 3 — MVC-pattern calculator
 
----
+Implements a calculator with separate model, view, and controller classes, coordinated by `main.java`.
 
-## 🛠️ Tech Stack & Environment Setup
+### Experiment 4 — Distributed calculator using RMI
 
-Ensure you have the following prerequisites installed on your local system:
+Shows a calculator service split between an RMI server and client, with a remote calculator interface.
 
-* **Java Development Kit:** JDK 8 or higher (JDK 11+ recommended)
-* **Web Server/Servlet Container:** Apache Tomcat (v9.0 or later)
-* **Database Management System:** MySQL Server 8.x (or Oracle XE)
-* **IDE:** Eclipse IDE for Enterprise Java Developers / IntelliJ IDEA Ultimate / NetBeans
-* **Database Driver jar:** `mysql-connector-j-xxx.jar` added to the classpath
+### Experiment 5 — Multithreaded TCP client-server
 
----
+Uses a TCP server and client to demonstrate socket-based communication and handling clients with threads.
 
-## 🚀 Execution & Setup Guide
+### Experiment 6 — HTTP request handling with Servlets
 
-### 1. Cloned Repository Setup
-```bash
-git clone https://github.com
-cd rtu-advanced-java-lab
+A Maven web application covering HTTP request handling with Jakarta Servlets. Its source includes servlet examples, filters, listeners, and HTML pages.
+
+### Experiment 7 — Web-based student portal
+
+A JSP and Servlet student portal demonstrating form submission, servlet processing, and displaying results in JSP pages.
+
+### Additional material
+
+`OTHERS/` contains alternate or supporting versions of the form, MVC calculator, RMI, and socket examples. These are separate from the numbered experiment folders.
+
+## ShopSphere capstone project
+
+[ShopSphere](ShopSphere/) is an e-commerce web application and the main integrated project in this repository. The source is divided by responsibility and Java technology:
+
+- **Web application:** Servlet controllers, services, JDBC DAOs, models, filters, listeners, JSP views, reusable JSP tags, and web assets.
+- **Database:** SQL schema and seed data in `ShopSphere/database/`.
+- **Swing administration:** Desktop administration UI with MVC-style controllers and JDBC DAOs in `ShopSphere/swing-admin/`.
+- **TCP networking:** Inventory client/server, object serialization, and a URLConnection example in `ShopSphere/network/`.
+- **RMI:** Remote inventory service, server, and client in `ShopSphere/rmi/`.
+- **Syllabus demonstrations:** JNDI, localization, JSP/JSTL examples, and related topic notes.
+
+The web application uses a layered structure:
+
+```text
+Browser and JSP views
+        ↓
+Servlet controllers and filters
+        ↓
+Services
+        ↓
+DAO classes
+        ↓ JDBC
+Database
 ```
 
-### 2. Compiling & Running Core Java (Swing/Networking/RMI)
-```bash
-# Compile
-javac Exp01_Swing_GUI/Calculator.java
-# Run
-java Exp01_Swing_GUI.Calculator
+The project is packaged as a WAR using Maven and is configured for Jakarta Servlet 6.1 and Tomcat 11. Its root-level `Dockerfile` packages ShopSphere for deployment, and `render.yaml` contains the Render service configuration.
+
+## Technologies
+
+- Java (ShopSphere Maven build targets Java 21)
+- Swing and Java event handling
+- JDBC and MySQL
+- TCP sockets, multithreading, and serialization
+- Java RMI
+- Jakarta Servlets, JSP, Expression Language, and JSTL
+- Maven, Apache Tomcat, Docker, and Render
+
+## Running ShopSphere locally
+
+Install a compatible JDK, Maven, Docker (if using the container), and MySQL if you want to run against a local database. For database setup, environment variables, and the standalone Java demos, see the [ShopSphere project guide](ShopSphere/README.md).
+
+From the repository root, build and test the web project:
+
+```powershell
+cd ShopSphere
+mvn clean test
+mvn clean package
 ```
 
-### 3. Deploying Web Applications (Servlets/JSP)
-1. Move the specific lab project folder into the `webapps` directory of your local **Apache Tomcat** installation.
-2. Start the Tomcat server instance (`catalina.sh run` or `startup.bat`).
-3. Open your browser and navigate to `http://localhost:8080/your_experiment_folder/`.
+To build and run the Docker image from the repository root:
 
----
+```powershell
+docker build -t shopsphere -f Dockerfile .
+docker run -p 8080:8080 shopsphere
+```
 
-## 📝 Lab Outcomes
-Upon completion of this lab, you will be able to:
-1. Develop rich, modular window-based desktop applications.
-2. Connect production-grade architectures with structured backend RDBMS.
-3. Manage distributed remote network communication objects smoothly.
-4. Deploy robust enterprise web solutions via dynamic Servlets and JSP architectures.
-5. 
+The local application is available at `http://localhost:8080/`. The ShopSphere guide explains database configuration required for features that use persistent storage.
+
+## Links
+
+- **GitHub:** [akashkumarhzb121-cloud](https://github.com/akashkumarhzb121-cloud)
+- **LinkedIn:** [Akash Kumar](https://www.linkedin.com/in/akash-kumar-488074309/)
+- **Live ShopSphere deployment:** [java-adv-lab.onrender.com](https://java-adv-lab.onrender.com/)
